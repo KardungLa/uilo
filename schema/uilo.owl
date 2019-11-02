@@ -1,0 +1,239 @@
+<rdf:RDF xmlns="http://uilo.org/uilo.owl#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dct="http://purl.org/dc/terms/" xmlns:uilo="http://uilo.org/uilo.owl#" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+  <owl:Ontology rdf:about="http://uilo.org/uilo">
+    <dc:title>User Interface and Layout Ontology (UILO)</dc:title>
+    <dc:creator>Daniel Schlager</dc:creator>
+    <owl:comment>
+      This is a generic user interface and layout ontology. 
+    </owl:comment>
+    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.2</owl:versionInfo>
+    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2019-05-08 - First draft
+    </owl:versionInfo>
+    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2019-08-15 - Published
+    </owl:versionInfo>
+    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2019-11-02 - Update to version 0.2
+    </owl:versionInfo>
+  </owl:Ontology>
+
+  <!--
+      ****************************  Main Classes  ***************************************
+  -->
+
+  <owl:Class rdf:about="http://uilo.org/uilo.owl#Root">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"></rdfs:subClassOf>
+    <rdfs:comment>Root can hold several views</rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:about="http://uilo.org/uilo.owl#View">
+    <rdfs:subClassOf rdf:resource="http://uilo.org/uilo.owl#Root"></rdfs:subClassOf>
+    <rdfs:comment>A view inside Root</rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:about="http://uilo.org/uilo.owl#Layout">
+    <rdfs:subClassOf rdf:resource="http://uilo.org/uilo.owl#View"></rdfs:subClassOf>
+    <rdfs:comment>Layout is part of a View</rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:about="http://uilo.org/uilo.owl#GridLayout">
+    <rdfs:subClassOf rdf:resource="http://uilo.org/uilo.owl#Layout"></rdfs:subClassOf>
+    <rdfs:comment>A grid layout that can be part of a Layout</rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:about="http://uilo.org/uilo.owl#CustomLayout">
+    <rdfs:subClassOf rdf:resource="http://uilo.org/uilo.owl#Layout"></rdfs:subClassOf>
+    <rdfs:comment>A custom layout that can be part of a Layout</rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:about="http://uilo.org/uilo.owl#LayoutItem">
+    <rdfs:subClassOf rdf:resource="http://uilo.org/uilo.owl#GridLayout"></rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://uilo.org/uilo.owl#CustomLayout"></rdfs:subClassOf>
+    <rdfs:comment>A layout item that can be part of a Layout</rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:about="http://uilo.org/uilo.owl#Component">
+    <rdfs:subClassOf rdf:resource="http://uilo.org/uilo.owl#LayoutItem"></rdfs:subClassOf>
+    <rdfs:comment>A component that can be part of a Layout Item</rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:about="http://uilo.org/uilo.owl#ComponentConfiguration">
+    <rdfs:comment>A component configuration</rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:about="http://uilo.org/uilo.owl#Element">
+    <rdfs:subClassOf rdf:resource="http://uilo.org/uilo.owl#LayoutItem"></rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://uilo.org/uilo.owl#Component"></rdfs:subClassOf>
+    <rdfs:comment>An content element inside a layout or component</rdfs:comment>
+  </owl:Class>
+
+  <!--
+      ****************************  Component Classes  **********************************
+  -->
+
+  <owl:Class rdf:about="http://uilo.org/uilo.owl#CustomComponent">
+    <rdfs:subClassOf rdf:resource="http://uilo.org/uilo.owl#Component"></rdfs:subClassOf>
+    <rdfs:comment>A custom component</rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:about="http://uilo.org/uilo.owl#HelloWorldComponent">
+    <rdfs:subClassOf rdf:resource="http://uilo.org/uilo.owl#Component"></rdfs:subClassOf>
+    <rdfs:comment>We always need a hello world component!</rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:about="http://uilo.org/uilo.owl#MenuComponent">
+    <rdfs:subClassOf rdf:resource="http://uilo.org/uilo.owl#Component"></rdfs:subClassOf>
+    <rdfs:comment>A generic menu component</rdfs:comment>
+  </owl:Class>
+
+  <!--
+      **************************** Element Classes  ******************************
+  -->
+
+  <owl:Class rdf:about="http://uilo.org/uilo.owl#Html">
+    <rdfs:subClassOf rdf:resource="http://uilo.org/uilo.owl#Element"></rdfs:subClassOf>
+    <rdfs:comment>HTML block</rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:about="http://uilo.org/uilo.owl#Heading">
+    <rdfs:subClassOf rdf:resource="http://uilo.org/uilo.owl#Element"></rdfs:subClassOf>
+    <rdfs:comment>A heading element</rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:about="http://uilo.org/uilo.owl#Paragraph">
+    <rdfs:subClassOf rdf:resource="http://uilo.org/uilo.owl#Element"></rdfs:subClassOf>
+    <rdfs:comment>A paragraph element</rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:about="http://uilo.org/uilo.owl#List">
+    <rdfs:subClassOf rdf:resource="http://uilo.org/uilo.owl#Element"></rdfs:subClassOf>
+    <rdfs:comment>A list element</rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:about="http://uilo.org/uilo.owl#ListItem">
+    <rdfs:subClassOf rdf:resource="http://uilo.org/uilo.owl#List"></rdfs:subClassOf>
+    <rdfs:comment>A list elements item</rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:about="http://uilo.org/uilo.owl#Image">
+    <rdfs:subClassOf rdf:resource="http://uilo.org/uilo.owl#Element"></rdfs:subClassOf>
+    <rdfs:comment>An image element</rdfs:comment>
+  </owl:Class>
+
+  <!--
+      ****************************  Properties  ************************************
+      ****************************    of Root  ***********************************
+  -->
+
+  <owl:ObjectProperty rdf:about="http://uilo.org/uilo.owl#hasView">
+    <owl:inverseOf rdf:resource="http://uilo.org/uilo.owl#isViewOf"></owl:inverseOf>
+    <rdfs:domain rdf:resource="http://uilo.org/uilo.owl#Root"></rdfs:domain>
+    <rdfs:range rdf:resource="http://uilo.org/uilo.owl#View"></rdfs:range>
+    <rdfs:comment></rdfs:comment>
+  </owl:ObjectProperty>
+
+  <!--
+      ****************************  Properties  ************************************
+      ****************************    of View  ***********************************
+  -->
+
+  <owl:ObjectProperty rdf:about="http://uilo.org/uilo.owl#hasLayout">
+    <owl:inverseOf rdf:resource="http://uilo.org/uilo.owl#isLayoutOf"></owl:inverseOf>
+    <rdfs:domain rdf:resource="http://uilo.org/uilo.owl#View"></rdfs:domain>
+    <rdfs:range rdf:resource="http://uilo.org/uilo.owl#Layout"></rdfs:range>
+    <rdfs:comment></rdfs:comment>
+  </owl:ObjectProperty>
+
+  <!--
+      ****************************  Properties  ************************************
+      ****************************    of Layout  ***********************************
+  -->
+
+  <owl:ObjectProperty rdf:about="http://uilo.org/uilo.owl#hasLayoutItem">
+    <owl:inverseOf rdf:resource="http://uilo.org/uilo.owl#isLayoutItemOf"></owl:inverseOf>
+    <rdfs:domain rdf:resource="http://uilo.org/uilo.owl#GridLayout"></rdfs:domain>
+    <rdfs:comment></rdfs:comment>
+  </owl:ObjectProperty>
+
+  <!--
+      ****************************  Properties  ************************************
+      ****************************    of LayoutItem  *******************************
+  -->
+
+  <owl:DatatypeProperty rdf:about="http://uilo.org/uilo.owl#hasCols">
+    <rdfs:domain rdf:resource="http://uilo.org/uilo.owl#LayoutItem"></rdfs:domain>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"></rdfs:range>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:about="http://uilo.org/uilo.owl#hasRows">
+    <rdfs:domain rdf:resource="http://uilo.org/uilo.owl#LayoutItem"></rdfs:domain>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"></rdfs:range>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:about="http://uilo.org/uilo.owl#hasX">
+    <rdfs:domain rdf:resource="http://uilo.org/uilo.owl#LayoutItem"></rdfs:domain>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"></rdfs:range>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:about="http://uilo.org/uilo.owl#hasY">
+    <rdfs:domain rdf:resource="http://uilo.org/uilo.owl#LayoutItem"></rdfs:domain>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"></rdfs:range>
+  </owl:DatatypeProperty>
+
+  <owl:ObjectProperty rdf:about="http://uilo.org/uilo.owl#hasComponent">
+    <owl:inverseOf rdf:resource="http://uilo.org/uilo.owl#isComponentOf"></owl:inverseOf>
+    <rdfs:domain rdf:resource="http://uilo.org/uilo.owl#LayoutItem"></rdfs:domain>
+    <rdfs:comment></rdfs:comment>
+  </owl:ObjectProperty>
+
+  <!--
+      ****************************  Properties  ************************************
+      ****************************    of Component  ********************************
+  -->
+
+  <owl:DatatypeProperty rdf:about="http://uilo.org/uilo.owl#hasComponentRef">
+    <rdfs:domain rdf:resource="http://uilo.org/uilo.owl#Component"></rdfs:domain>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"></rdfs:range>
+    <rdfs:comment>This is the reference to your internal component name or the corresponding id</rdfs:comment>
+  </owl:DatatypeProperty>
+
+  <owl:ObjectProperty rdf:about="http://uilo.org/uilo.owl#hasComponentConfiguration">
+    <owl:inverseOf rdf:resource="http://uilo.org/uilo.owl#isComponentConfigurationOf"></owl:inverseOf>
+    <rdfs:domain rdf:resource="http://uilo.org/uilo.owl#Component"></rdfs:domain>
+    <rdfs:comment>Every component can have a custom configuration</rdfs:comment>
+  </owl:ObjectProperty>
+
+
+  <!--
+      ****************************  Properties  ************************************
+      ****************************    of ComponentConfiguration  *******************
+  -->
+
+  <owl:DatatypeProperty rdf:about="http://uilo.org/uilo.owl#hasTitle">
+    <rdfs:domain rdf:resource="http://uilo.org/uilo.owl#ComponentConfiguration"></rdfs:domain>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"></rdfs:range>
+    <rdfs:comment>Title of the component</rdfs:comment>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:about="http://uilo.org/uilo.owl#hasDescription">
+    <rdfs:domain rdf:resource="http://uilo.org/uilo.owl#ComponentConfiguration"></rdfs:domain>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"></rdfs:range>
+    <rdfs:comment>Description of the component</rdfs:comment>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:about="http://uilo.org/uilo.owl#hasCustomOptions">
+    <rdfs:domain rdf:resource="http://uilo.org/uilo.owl#ComponentConfiguration"></rdfs:domain>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"></rdfs:range>
+    <rdfs:comment>JSON comes here</rdfs:comment>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:about="http://uilo.org/uilo.owl#hasCustomStylesheet">
+    <rdfs:domain rdf:resource="http://uilo.org/uilo.owl#ComponentConfiguration"></rdfs:domain>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"></rdfs:range>
+    <rdfs:comment>CSS comes here</rdfs:comment>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:about="http://uilo.org/uilo.owl#hasCustomStylesheetUri">
+    <rdfs:domain rdf:resource="http://uilo.org/uilo.owl#ComponentConfiguration"></rdfs:domain>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"></rdfs:range>
+    <rdfs:comment>URI to the corresponding stylesheet</rdfs:comment>
+  </owl:DatatypeProperty>
+
+</rdf:RDF>
