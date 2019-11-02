@@ -1,6 +1,6 @@
 # The User Interface and Layout Ontology (UILO)
 
-[UILO Schema](http://uilo.org/schema/uilo.xml)
+[UILO Schema](http://uilo.org/schema/uilo.owl)
 
 Author: Daniel Schlager "email at danielschlager.at"
 
